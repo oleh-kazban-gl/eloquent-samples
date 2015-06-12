@@ -35,4 +35,5 @@ for (var countX = 0; countX < dimension; countX++) {
 
   row += '\n';
 }
+
 console.log(row);

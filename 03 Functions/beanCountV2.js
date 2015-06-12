@@ -7,38 +7,40 @@
  two-character string has length 2, and its characters have positions 0 and 1.
 
  Write a function countBs that takes a string as its only argument and returns
- a number that indicates how many uppercase â€œBâ€ characters are in the string.
+ a number that indicates how many uppercase “B” characters are in the string.
 
  Next, write a function called countChar that behaves like countBs, except it
  takes a second argument that indicates the character that is to be counted
- (rather than counting only uppercase â€œBâ€ characters). Rewrite countBs to make
+ (rather than counting only uppercase “B” characters). Rewrite countBs to make
  use of this new function.*/
 
 'use strict';
 
-function countBs(inputString) {
-  var countChar = 0;
+function countBsV2(inputString) {
+  var characters = inputString.split('');
+  var charCount = 0;
 
-  for (var count = 0; count < inputString.length; count++) {
-    if (inputString.charAt(count) === 'B') {
-      countChar++;
+  for (var count = 0; count < characters.length; count++) {
+    if (characters[count] === 'B') {
+      charCount++;
     }
   }
 
-  return countChar;
+  return charCount;
 }
 
-function countChar(inputString, char) {
-  var countChar = 0;
+function countCharV2(inputString, char) {
+  var characters = inputString.split('');
+  var charCount = 0;
 
-  for (var count = 0; count < inputString.length; count++) {
-    if (inputString.charAt(count) === char) {
-      countChar++;
+  for (var count = 0; count < characters.length; count++) {
+    if (characters[count] === char) {
+      charCount++;
     }
   }
 
-  return countChar;
+  return charCount;
 }
 
-console.log(countBs('Beer & beer'));
-console.log(countChar('Beer & beer','&'));
+console.log(countBsV2('Beer & beer'));
+console.log(countCharV2('Beer & beer','&'));
