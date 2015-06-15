@@ -1,0 +1,42 @@
+[
+  {
+    "firstName": "Oleg",
+    "middleName": "",
+    "lastName": "Kazban",
+    "birthDay": 20,
+    "birthMonth": "september",
+    "birthYear": 1980
+  },
+  {
+    "firstName": "Anton",
+    "middleName": "",
+    "lastName": "Gavrilov",
+    "birthDay": 21,
+    "birthMonth": "august",
+    "birthYear": 1984
+  },
+  {
+    "firstName": "Ivan",
+    "middleName": "",
+    "lastName": "Ivanov",
+    "birthDay": 10,
+    "birthMonth": "march",
+    "birthYear": 1975
+  },
+  {
+    "firstName": "Pete",
+    "middleName": "",
+    "lastName": "Petrov",
+    "birthDay": 4,
+    "birthMonth": "january",
+    "birthYear": 1990
+  },
+  {
+    "firstName": "Serge",
+    "middleName": "",
+    "lastName": "Sidoroff",
+    "birthDay": 29,
+    "birthMonth": "february",
+    "birthYear": 1983
+  }
+]
