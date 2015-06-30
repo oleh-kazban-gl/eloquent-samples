@@ -7,27 +7,7 @@
  month names, and use plain JavaScript, without any module loader system.
  */
 
-var month = function () {
-  var months = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December'
-  ];
-
-  return  {
-    name: function(number) { return months[number]; },
-    number: function(name) { return months.indexOf(name); }
-  }
-}();
+var month = require('./month');
 
 console.log(month.name(2));
 // ? March
