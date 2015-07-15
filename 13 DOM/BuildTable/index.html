@@ -1,0 +1,38 @@
+<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Build a Table</title>
+    <style>
+        /* Defines a cleaner look for tables */
+        table {
+            border-collapse: collapse;
+        }
+
+        td, th {
+            border: 1px solid black;
+            padding: 3px 8px;
+        }
+
+        th {
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+<div id="tablePlaceHolder"></div>
+
+<script src="script.js"></script>
+<script>
+    var tableStructure = [
+        {caption: 'Build a Table'},
+        {th: ['name', 'height', 'country']},
+        {tr: ['Kilimanjaro', 5895, 'Tanzania']},
+        {tr: ['Goverla', 2061, 'Ukraine']},
+        {tr: ['Everest', 8848, 'Nepal']}
+    ];
+
+    buildTable(tableStructure);
+</script>
+</body>
+</html>
