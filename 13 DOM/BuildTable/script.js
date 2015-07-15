@@ -119,4 +119,5 @@ function buildTable(structure) {
       }
     });
   }
+
 }
