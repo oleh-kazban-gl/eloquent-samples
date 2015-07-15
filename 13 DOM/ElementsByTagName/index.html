@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Elements by tag name</title>
+</head>
+<body>
+
+<h1>Heading with a <span>span</span> element.</h1>
+
+<p>A paragraph with <span>one</span>, <span>two</span>
+    spans.</p>
+
+<script src="script.js"></script>
+<script>
+    console.log('document.body: h1: ' + byTagName(document.body, "h1").length);
+    console.log('document.body: span: ' + byTagName(document.body, "span").length);
+
+    var para = document.querySelector("p");
+    console.log('p > span: ' + byTagName(para, "span").length);
+</script>
+</body>
+</html>
