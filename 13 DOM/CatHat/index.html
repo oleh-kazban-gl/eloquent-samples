@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cat with Hat</title>
+</head>
+<body>
+<img src="img/cat.jpg" id="cat" style="position: absolute">
+<img src="img/hat.png" id="hat" style="position: absolute">
+
+<script src="script.js"></script>
+<script>
+    var cat = document.querySelector("#cat");
+    var hat = document.querySelector("#hat");
+
+    var catAngle = 0;
+    var hatAngle = 90;
+    var lastTime = null;
+
+    requestAnimationFrame(animate);
+</script>
+</body>
+</html>
