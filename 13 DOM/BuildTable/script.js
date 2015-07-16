@@ -20,12 +20,10 @@ function buildTable(structure) {
 
     for (var rowProperty in rowObject) {
       if (rowObject.hasOwnProperty(rowProperty)) {
-        if (rowProperty == 'caption') {
+        if (rowProperty === 'caption') {
           addCaption(table, rowObject[rowProperty]);
-        } else if (rowProperty == 'th') {
-          addHeader(table, rowObject[rowProperty]);
-        } else if (rowProperty == 'tr') {
-          addRow(table, rowObject[rowProperty]);
+        } else if (rowProperty === 'th' || rowProperty === 'tr') {
+          addRow(table, rowObject[rowProperty], rowProperty);
         }
       }
     }
@@ -61,37 +59,24 @@ function buildTable(structure) {
   }
 
   /**
-   * Function creates Header Cells for table
-   * @param (table) - target Table
-   * @param (headerCells) - Array of Header Cells
-   */
-
-  function addHeader(table, headerCells) {
-    var row = document.createElement('tr');
-
-    for (var count = 0; count < headerCells.length; count++) {
-      var cell = document.createElement('th');
-      var cellText = document.createTextNode(headerCells[count]);
-
-      cell.appendChild(cellText);
-      row.appendChild(cell);
-    }
-
-    table.appendChild(row);
-    console.log('adding a table header: ' + headerCells);
-  }
-
-  /**
    * Function creates Row and populate it by Cells
    * @param (table) - target Table
    * @param (rowCells) - Array of Row Cells
+   * @param (type) - String, type of Cell - 'th' or 'td'
    */
 
-  function addRow(table, rowCells) {
+  function addRow(table, rowCells, type) {
     var row = document.createElement('tr');
 
     for (var count = 0; count < rowCells.length; count++) {
-      var cell = document.createElement('td');
+      var cell;
+
+      if (type === 'th') {
+        cell = document.createElement('th');
+      } else if (type === 'tr') {
+        cell = document.createElement('td');
+      }
+
       var cellText = document.createTextNode(rowCells[count]);
 
       if (!isNaN(parseInt(rowCells[count]))) {
@@ -107,7 +92,7 @@ function buildTable(structure) {
   }
 
   /**
-   * Function realign cells withs numbers
+   * Function realign cells with numbers
    */
 
   function reAlign() {
@@ -119,5 +104,4 @@ function buildTable(structure) {
       }
     });
   }
-
 }
