@@ -10,7 +10,7 @@ function animate(time) {
   cat.style.left = (cat.clientWidth / 2) + (Math.cos(catAngle) * 400) + "px";
 
   hat.style.top = (hat.clientHeight) + (Math.sin(hatAngle) * 200) + "px";
-  hat.style.left = (hat.clientWidth) + (Math.cos(hatAngle) * 400) + "px";
+  hat.style.left = (hat.clientWidth) + (Math.cos(hatAngle) * 200) + "px";
 
   requestAnimationFrame(animate);
 }
