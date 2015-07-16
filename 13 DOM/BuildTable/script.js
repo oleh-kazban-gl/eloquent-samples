@@ -99,7 +99,7 @@ function buildTable(structure) {
     var cells = document.getElementsByTagName('td');
 
     Array.prototype.forEach.call(cells, function (cell) {
-      if (cell.getAttribute('data-height') == 'right') {
+      if (cell.getAttribute('data-height') === 'right') {
         cell.style.textAlign = 'right';
       }
     });
