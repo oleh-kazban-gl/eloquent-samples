@@ -235,4 +235,5 @@ function drawHelper(outerDiameter, innerDiameter) {
   context.arc(-innerDiameter * Math.cos(Math.PI / 4), -innerDiameter * Math.sin(Math.PI / 4), 5, 0, Math.PI * 2);
 
   context.stroke();
+
 }
