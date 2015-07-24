@@ -151,15 +151,35 @@ function drawFermatSpiral(constant, multiplier, quantity) {
 
 /**
  * A yellow star (8 rays)
- * @param(diameter) - diameter of star
+ * @param(outerDiameter) - diameter of star with rays
+ * @param(controlDiameter) - the path where control points are located
  * @param(quantity) - quantity of rays
  * @param(color) - color of rendered star
- *
  */
 
-function drawYellowStar(diameter, quantity, color) {
+function drawYellowStar(outerDiameter, controlDiameter, quantity, color) {
     'use strict';
 
+    var degreeIncrement = 1 / quantity;
+    context.fillStyle = color;
+
+    context.moveTo(outerDiameter * Math.cos(0), outerDiameter * Math.sin(0));
+
+    // 2 is not 'magic' number - this is 2PI, e.i. 360 degrees
+    for (var count = 0; count < 2; count += 2 * degreeIncrement) {
+        drawBezierSegment(count + degreeIncrement);
+    }
+
+    function drawBezierSegment(degree) {
+        context.quadraticCurveTo(
+            controlDiameter * Math.cos(Math.PI * degree),
+            controlDiameter * Math.sin(Math.PI * degree),
+            outerDiameter * Math.cos(Math.PI * (degree + degreeIncrement)),
+            outerDiameter * Math.sin(Math.PI * (degree + degreeIncrement))
+        )
+    }
+
+    context.fill();
 }
 
 /**
@@ -174,6 +194,7 @@ function drawStraightStar(outerDiameter, innerDiameter, quantity, color) {
 
     context.moveTo(outerDiameter * Math.cos(0), outerDiameter * Math.sin(0));
 
+    // 2 is not 'magic' number - this is 2PI, e.i. 360 degrees
     for (var count = 0; count < 2; count += 2 * degreeIncrement) {
         drawSegment(count + degreeIncrement);
     }
@@ -186,6 +207,10 @@ function drawStraightStar(outerDiameter, innerDiameter, quantity, color) {
 
     context.fill();
 }
+
+/**
+ * Draws an aim-point in the centre of canvas to be sure that geometry is ok :)
+ */
 
 function drawHelper(outerDiameter, innerDiameter) {
     'use strict';
