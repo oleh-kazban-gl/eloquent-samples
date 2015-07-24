@@ -8,8 +8,11 @@ context.canvas.height = window.innerHeight;
 // For aesthetics purposes let translate shape to the center of canvas
 context.translate(context.canvas.width / 2, context.canvas.height / 2);
 
-/*
+/**
  * A trapezoid (a rectangle that is wider on one side)
+ * @param(minWidth) - top side length of trapezoid
+ * @param(maxWidth) - bottom side length of trapezoid
+ * @param(height) - height of trapezoid
  */
 
 function drawTrapezoid(minWidth, maxWidth, height) {
@@ -37,8 +40,10 @@ function drawTrapezoid(minWidth, maxWidth, height) {
   context.stroke();
 }
 
-/*
+/**
  * A red diamond (a rectangle rotated 45 degrees or ?? radians)
+ * @param(width) - side width of diamond
+ * @param(color) - HEX value of background color
  */
 
 function drawRedDiamond(width, color) {
@@ -61,12 +66,26 @@ function drawRedDiamond(width, color) {
   context.fillRect(-width / 2, -width / 2, width, width);
 }
 
-/*
+/**
  * A zigzagging line
+ * @param(width) - horizontal width of zigzag
+ * @param(step) - step of transitioning
+ * @param(quantity) - quantity of zigzags
  */
 
-function drawzZigzaggingLine() {
+function drawzZigzaggingLine(width, step, quantity) {
+  var x = 0;
+  var y = 0;
 
+  context.beginPath();
+  context.moveTo(x, y);
+
+  for (var count = 0; count < quantity; count++) {
+    context.lineTo(width, y += step);
+    context.lineTo(0, y += step);
+  }
+
+  context.stroke();
 }
 
 /*
