@@ -16,30 +16,28 @@ context.translate(context.canvas.width / 2, context.canvas.height / 2);
  */
 
 function drawTrapezoid(minWidth, maxWidth, height) {
-  'use strict';
+    'use strict';
 
-  context.strokeStyle = 'black';
+    context.strokeStyle = 'black';
 
-  context.beginPath();
-  context.moveTo(0, 0);
-  context.lineTo(0, minWidth);
+    context.beginPath();
 
-  // Moving to upper left point
-  //context.moveTo(-(minWidth / 2), -(height / 2));
+    // Moving to upper left point
+    context.moveTo(-(minWidth / 2), -(height / 2));
 
-  // Top line
-  //context.lineTo(minWidth, -(height / 2));
+    // Top line
+    context.lineTo(minWidth / 2, -(height / 2));
 
-  // Right side
-  //context.lineTo(minWidth + (maxWidth - minWidth) / 2, height);
+    // Right side
+    context.lineTo(minWidth / 2 + (maxWidth - minWidth) / 2, height / 2);
 
-  // Bottom line
-  //context.lineTo(-maxWidth / 2, height);
+    // Bottom line
+    context.lineTo(-maxWidth / 2, height / 2);
 
-  // Left side
-  //context.lineTo(-(minWidth / 2), -(height / 2));
+    // Left side
+    context.lineTo(-(minWidth / 2), -(height / 2));
 
-  context.stroke();
+    context.stroke();
 }
 
 /**
@@ -49,24 +47,24 @@ function drawTrapezoid(minWidth, maxWidth, height) {
  */
 
 function drawRedDiamond(width, color) {
-  'use strict';
+    'use strict';
 
-  context.fillStyle = color;
+    context.fillStyle = color;
 
-  context.font = '28px Georgia';
-  context.fillText('Try to press \'Escape\' button', -50, 100);
+    context.font = '28px Georgia';
+    context.fillText('Try to press \'Escape\' button', -50, 100);
 
-  addEventListener('keyup', function (event) {
-    if (event.keyCode === 27) {
-      console.log('Key is pressed - Rotating');
-      context.clearRect(-width / 2 - 1, -width / 2 - 1, width + 2, width + 2);
+    addEventListener('keyup', function (event) {
+        if (event.keyCode === 27) {
+            console.log('Key is pressed - Rotating');
+            context.clearRect(-width / 2 - 1, -width / 2 - 1, width + 2, width + 2);
 
-      context.rotate(Math.PI / 4);
-      context.fillRect(-width / 2, -width / 2, width, width);
-    }
-  });
+            context.rotate(Math.PI / 4);
+            context.fillRect(-width / 2, -width / 2, width, width);
+        }
+    });
 
-  context.fillRect(-width / 2, -width / 2, width, width);
+    context.fillRect(-width / 2, -width / 2, width, width);
 }
 
 /**
@@ -77,20 +75,20 @@ function drawRedDiamond(width, color) {
  */
 
 function drawzZigzaggingLine(width, step, quantity) {
-  'use strict';
+    'use strict';
 
-  var x = 0;
-  var y = 0;
+    var x = 0;
+    var y = 0;
 
-  context.beginPath();
-  context.moveTo(x, y);
+    context.beginPath();
+    context.moveTo(x, y);
 
-  for (var count = 0; count < quantity; count++) {
-    context.lineTo(width, y += step);
-    context.lineTo(0, y += step);
-  }
+    for (var count = 0; count < quantity; count++) {
+        context.lineTo(width, y += step);
+        context.lineTo(0, y += step);
+    }
 
-  context.stroke();
+    context.stroke();
 }
 
 /**
@@ -103,24 +101,24 @@ function drawzZigzaggingLine(width, step, quantity) {
  */
 
 function drawSpiral(constant, radiusIncrement, segments) {
-  'use strict';
+    'use strict';
 
-  // Center of canvas;
-  var centerX = context.canvas.width / 2;
-  var centerY = context.canvas.height / 2;
+    // Center of canvas;
+    var centerX = context.canvas.width / 2;
+    var centerY = context.canvas.height / 2;
 
-  context.beginPath();
-  context.moveTo(0, 0);
+    context.beginPath();
+    context.moveTo(0, 0);
 
-  for (var count = 0; count < segments; count++) {
-    var angle = 0.3 * count;
-    centerX = (constant + radiusIncrement * angle) * Math.cos(angle);
-    centerY = (constant + radiusIncrement * angle) * Math.sin(angle);
+    for (var count = 0; count < segments; count++) {
+        var angle = 0.3 * count;
+        centerX = (constant + radiusIncrement * angle) * Math.cos(angle);
+        centerY = (constant + radiusIncrement * angle) * Math.sin(angle);
 
-    context.lineTo(centerX, centerY);
-  }
+        context.lineTo(centerX, centerY);
+    }
 
-  context.stroke();
+    context.stroke();
 }
 
 /**
@@ -131,37 +129,57 @@ function drawSpiral(constant, radiusIncrement, segments) {
  */
 
 function drawFermatSpiral(constant, multiplier, quantity) {
-  'use strict';
+    'use strict';
 
-  // Center of canvas;
-  var centerX = context.canvas.width / 2;
-  var centerY = context.canvas.height / 2;
+    // Center of canvas;
+    var centerX = context.canvas.width / 2;
+    var centerY = context.canvas.height / 2;
 
-  context.beginPath();
-  context.moveTo(0, 0);
+    context.beginPath();
+    context.moveTo(0, 0);
 
-  for (var count = 0; count < quantity; count++) {
-    var angle = multiplier * count;
-    centerX = (constant + Math.pow(angle, 0.5)) * Math.cos(angle);
-    centerY = (constant + Math.pow(angle, 0.5)) * Math.sin(angle);
+    for (var count = 0; count < quantity; count++) {
+        var angle = multiplier * count;
+        centerX = (constant + Math.pow(angle, 0.5)) * Math.cos(angle);
+        centerY = (constant + Math.pow(angle, 0.5)) * Math.sin(angle);
 
-    context.lineTo(centerX, centerY);
-  }
+        context.lineTo(centerX, centerY);
+    }
 
-  context.stroke();
+    context.stroke();
 }
 
 /**
  * A yellow star (8 rays)
- * @param(diameter) - diameter of star
+ * @param(outerDiameter) - diameter of star with rays
+ * @param(controlDiameter) - the path where control points are located
  * @param(quantity) - quantity of rays
  * @param(color) - color of rendered star
- *
  */
 
-function drawYellowStar(diameter, quantity, color) {
-  'use strict';
+function drawYellowStar(outerDiameter, controlDiameter, quantity, color) {
+    'use strict';
 
+    var degreeIncrement = 1 / quantity;
+    context.fillStyle = color;
+
+    context.moveTo(outerDiameter * Math.cos(0), outerDiameter * Math.sin(0));
+
+    // 2 is not 'magic' number - this is 2PI, e.i. 360 degrees
+    for (var count = 0; count < 2; count += 2 * degreeIncrement) {
+        drawBezierSegment(count + degreeIncrement);
+    }
+
+    function drawBezierSegment(degree) {
+        context.quadraticCurveTo(
+            controlDiameter * Math.cos(Math.PI * degree),
+            controlDiameter * Math.sin(Math.PI * degree),
+            outerDiameter * Math.cos(Math.PI * (degree + degreeIncrement)),
+            outerDiameter * Math.sin(Math.PI * (degree + degreeIncrement))
+        )
+    }
+
+    context.fill();
 }
 
 /**
@@ -169,70 +187,76 @@ function drawYellowStar(diameter, quantity, color) {
  */
 
 function drawStraightStar(outerDiameter, innerDiameter, quantity, color) {
-  'use strict';
+    'use strict';
 
-  var degreeIncrement = 1 / quantity;
-  context.fillStyle = color;
+    var degreeIncrement = 1 / quantity;
+    context.fillStyle = color;
 
-  context.moveTo(outerDiameter * Math.cos(0), outerDiameter * Math.sin(0));
+    context.moveTo(outerDiameter * Math.cos(0), outerDiameter * Math.sin(0));
 
-  for (var count = 0; count < 2; count += 2 * degreeIncrement) {
-    drawSegment(count + degreeIncrement);
-  }
+    // 2 is not 'magic' number - this is 2PI, e.i. 360 degrees
+    for (var count = 0; count < 2; count += 2 * degreeIncrement) {
+        drawSegment(count + degreeIncrement);
+    }
 
-  function drawSegment(degree) {
-    context.lineTo(innerDiameter * Math.cos(Math.PI * degree), innerDiameter * Math.sin(Math.PI * degree));
-    degree += degreeIncrement;
-    context.lineTo(outerDiameter * Math.cos(Math.PI * degree), outerDiameter * Math.sin(Math.PI * degree));
-  }
+    function drawSegment(degree) {
+        context.lineTo(innerDiameter * Math.cos(Math.PI * degree), innerDiameter * Math.sin(Math.PI * degree));
+        degree += degreeIncrement;
+        context.lineTo(outerDiameter * Math.cos(Math.PI * degree), outerDiameter * Math.sin(Math.PI * degree));
+    }
 
-  context.fill();
+    context.fill();
 }
 
+/**
+ * Draws an aim-point in the centre of canvas to be sure that geometry is ok :)
+ */
+
 function drawHelper(outerDiameter, innerDiameter) {
-  'use strict';
+    'use strict';
 
-  var centerX = 0;
-  var centerY = 0;
-  context.strokeStyle = 'green';
+    var centerX = 0;
+    var centerY = 0;
+    context.strokeStyle = 'green';
 
-  context.moveTo(centerX, centerY);
+    context.moveTo(centerX, centerY);
 
 // Primary helpers
-  context.arc(centerX, centerY, outerDiameter, 0, Math.PI * 2);
-  context.moveTo(0, -outerDiameter);
-  context.lineTo(0, outerDiameter);
-  context.moveTo(-outerDiameter, 0);
-  context.lineTo(outerDiameter, 0);
+    context.arc(centerX, centerY, outerDiameter, 0, Math.PI * 2);
+    context.moveTo(0, -outerDiameter);
+    context.lineTo(0, outerDiameter);
+    context.moveTo(-outerDiameter, 0);
+    context.lineTo(outerDiameter, 0);
 
-  // Secondary helpers
-  context.arc(centerX, centerY, innerDiameter, 0, Math.PI * 2);
+    // Secondary helpers
+    context.arc(centerX, centerY, innerDiameter, 0, Math.PI * 2);
 
-  context.moveTo(-outerDiameter, -outerDiameter);
-  context.lineTo(outerDiameter, outerDiameter);
-  context.moveTo(-outerDiameter, outerDiameter);
-  context.lineTo(outerDiameter, -outerDiameter);
+    context.moveTo(-outerDiameter, -outerDiameter);
+    context.lineTo(outerDiameter, outerDiameter);
+    context.moveTo(-outerDiameter, outerDiameter);
+    context.lineTo(outerDiameter, -outerDiameter);
 
-  // Pointer helpers
-  // Master
-  context.moveTo(0, -outerDiameter);
-  context.arc(0, -outerDiameter, 10, 0, Math.PI * 2);
-  context.moveTo(0, outerDiameter);
-  context.arc(0, outerDiameter, 10, 0, Math.PI * 2);
-  context.moveTo(outerDiameter, 0);
-  context.arc(outerDiameter, 0, 10, 0, Math.PI * 2);
-  context.moveTo(-outerDiameter, 0);
-  context.arc(-outerDiameter, 0, 10, 0, Math.PI * 2);
+    // Pointer helpers
+    // Master
+    context.moveTo(0, -outerDiameter);
+    context.arc(0, -outerDiameter, 10, 0, Math.PI * 2);
+    context.moveTo(0, outerDiameter);
+    context.arc(0, outerDiameter, 10, 0, Math.PI * 2);
+    context.moveTo(outerDiameter, 0);
+    context.arc(outerDiameter, 0, 10, 0, Math.PI * 2);
+    context.moveTo(-outerDiameter, 0);
+    context.arc(-outerDiameter, 0, 10, 0, Math.PI * 2);
 
-  // Slave
-  context.moveTo(innerDiameter * Math.cos(Math.PI / 4), -innerDiameter * Math.sin(Math.PI / 4));
-  context.arc(innerDiameter * Math.cos(Math.PI / 4), -innerDiameter * Math.sin(Math.PI / 4), 5, 0, Math.PI * 2);
-  context.moveTo(innerDiameter * Math.cos(Math.PI / 4), innerDiameter * Math.sin(Math.PI / 4));
-  context.arc(innerDiameter * Math.cos(Math.PI / 4), innerDiameter * Math.sin(Math.PI / 4), 5, 0, Math.PI * 2);
-  context.moveTo(-innerDiameter * Math.cos(Math.PI / 4), innerDiameter * Math.sin(Math.PI / 4));
-  context.arc(-innerDiameter * Math.cos(Math.PI / 4), innerDiameter * Math.sin(Math.PI / 4), 5, 0, Math.PI * 2);
-  context.moveTo(-innerDiameter * Math.cos(Math.PI / 4), -innerDiameter * Math.sin(Math.PI / 4));
-  context.arc(-innerDiameter * Math.cos(Math.PI / 4), -innerDiameter * Math.sin(Math.PI / 4), 5, 0, Math.PI * 2);
+    // Slave
+    context.moveTo(innerDiameter * Math.cos(Math.PI / 4), -innerDiameter * Math.sin(Math.PI / 4));
+    context.arc(innerDiameter * Math.cos(Math.PI / 4), -innerDiameter * Math.sin(Math.PI / 4), 5, 0, Math.PI * 2);
+    context.moveTo(innerDiameter * Math.cos(Math.PI / 4), innerDiameter * Math.sin(Math.PI / 4));
+    context.arc(innerDiameter * Math.cos(Math.PI / 4), innerDiameter * Math.sin(Math.PI / 4), 5, 0, Math.PI * 2);
+    context.moveTo(-innerDiameter * Math.cos(Math.PI / 4), innerDiameter * Math.sin(Math.PI / 4));
+    context.arc(-innerDiameter * Math.cos(Math.PI / 4), innerDiameter * Math.sin(Math.PI / 4), 5, 0, Math.PI * 2);
+    context.moveTo(-innerDiameter * Math.cos(Math.PI / 4), -innerDiameter * Math.sin(Math.PI / 4));
+    context.arc(-innerDiameter * Math.cos(Math.PI / 4), -innerDiameter * Math.sin(Math.PI / 4), 5, 0, Math.PI * 2);
 
-  context.stroke();
+    context.stroke();
+
 }
