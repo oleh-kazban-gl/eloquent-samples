@@ -74,7 +74,7 @@ function drawRedDiamond(width, color) {
  * @param(quantity) - quantity of zigzags
  */
 
-function drawzZigzaggingLine(width, step, quantity) {
+function drawZigzaggingLine(width, step, quantity) {
     'use strict';
 
     var x = 0;
