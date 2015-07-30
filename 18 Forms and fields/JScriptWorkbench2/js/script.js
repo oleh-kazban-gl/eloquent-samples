@@ -18,9 +18,6 @@ function run() {
   var response = document.createTextNode('> ' + result);
   output.appendChild(response);
   output.appendChild(newLine);
-
-  console.log('source: ' + getSourceCode());
-  console.log('response: ' + result);
 }
 
 button.onclick = run;
